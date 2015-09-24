@@ -1,0 +1,5 @@
+<?php
+
+function adminlte_preprocess_page(&$variables) {
+  $variables['favicon'] = theme_get_setting('favicon.url');
+}

@@ -55,11 +55,23 @@
 #}
 <header class="main-header">
   <!-- Logo -->
-  <a href="{{ front_page }}" class="logo" rel="home">
-    <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini">{{ site_name }}</span>
-    <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg">{{ site_name }}</span>
+  <a href="{{ front_page }}" id="logo" class="logo" rel="home">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">
+        {% if logo and favicon %}
+          <img src="{{ favicon }}" alt="{{ site_name }}">
+        {% else %}
+          {% for word in site_name | split(' ',4) %}{% set letter = word | split('',1) %}{{ letter[0] }}{% endfor %}
+        {% endif %}
+      </span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg" >
+        {% if logo %}
+          <img src="{{ logo }}" alt="{{ site_name }}">
+        {% else %}
+          {{ site_name }}
+        {% endif %}
+      </span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -79,7 +91,6 @@
 <aside class="main-sidebar">
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar">
-  <br><br><br><br> <!-- HACK -->
   {% if page.sidebar_first %}{{ page.sidebar_first }}{% endif %}
   {% if page.sidebar_second %}{{ page.sidebar_second }}{% endif %}
 </section>

@@ -1,0 +1,20 @@
+#logo img{
+  max-height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#logo .logo-lg, #logo .logo-mini{
+  position:relative;
+  height:50px;
+}
+
+@media (max-width: 767px){
+
+  #logo, #logo:hover {
+    background-color:#fff;
+    border-bottom: 1px solid #eee;
+  }
+
+}
