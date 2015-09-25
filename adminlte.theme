@@ -22,3 +22,28 @@ function adminlte_preprocess_page(&$variables) {
   $variables['user']['picture'] = $picture;
   $variables['user']['created'] = $user->getCreatedtime();
 }
+
+function adminlte_preprocess_menu(&$variables) {
+  $icon_setting = explode("\n",theme_get_setting('menu_icons'));
+  $icons = [];
+  for($i = 0; $i < sizeof($icon_setting); $i++){
+    $icon_setting[$i] = explode('|',$icon_setting[$i]);
+    if(sizeof($icon_setting[$i]) >= 2){
+      $icons[$icon_setting[$i][0]] = $icon_setting[$i][1];
+    }
+  }
+  foreach ($variables['items'] as $id => $item){
+    if($icons[$item['title']]){
+      $variables['items'][$id]['icon'] = $icons[$item['title']];
+    }
+  }
+}
+
+function adminlte_form_system_theme_settings_alter(&$form, $form_state) {
+  $form['menu_icons'] = array(
+    '#type'          => 'textarea',
+    '#title'         => t('Menu Icons'),
+    '#default_value' => theme_get_setting('menu_icons'),
+    '#description'   => t("<a href='https://fortawesome.github.io/Font-Awesome/icons/' target='_blank'>Font Awesome</a> icon class with associated menu item. One per line. Format: Menu link title|class")
+  );
+}
