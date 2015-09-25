@@ -1,5 +1,9 @@
 <?php
 
+function adminlte_preprocess_html(&$variables) {
+  $variables['skin'] = theme_get_setting('skin');
+}
+
 function adminlte_preprocess_page(&$variables) {
   $variables['favicon'] = theme_get_setting('favicon.url');
   $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
@@ -40,6 +44,25 @@ function adminlte_preprocess_menu(&$variables) {
 }
 
 function adminlte_form_system_theme_settings_alter(&$form, $form_state) {
+  $form['skin'] = array(
+    '#type'          => 'select',
+    '#title'         => t('AdminLTE Skin'),
+    '#options' => array(
+     "black" => t('Black'),
+     "black-light" => t('Black - Light'),
+     "blue" => t('Blue'),
+     "blue-light" => t('Blue - Light'),
+     "green" => t('Green'),
+     "green-light" => t('Green - Light'),
+     "purple" => t('Purple'),
+     "purple-light" => t('Purple - Light'),
+     "red" => t('Red'),
+     "red-light" => t('Red - Light'),
+     "yellow" => t('Yellow'),
+     "yellow-light" => t('Yellow - Light'),
+    ),
+    '#default_value' => theme_get_setting('skin')
+  );
   $form['menu_icons'] = array(
     '#type'          => 'textarea',
     '#title'         => t('Menu Icons'),

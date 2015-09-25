@@ -11,3 +11,4 @@ logo:
 favicon:
   use_default: 1
 menu_icons: "Administration|fa-gears\r\nHome|fa-home"
+skin: blue

@@ -12,7 +12,11 @@
 
 @media (max-width: 767px){
 
-  #logo, #logo:hover {
+  body.skin-black #logo,
+  body.skin-black #logo:hover,
+  body.skin-black-light #logo,
+  body.skin-black-light #logo:hover
+  {
     background-color:#fff;
     border-bottom: 1px solid #eee;
   }
