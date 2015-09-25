@@ -1,9 +1,9 @@
 base:
   version: 1.x
   js:
-    lib/jQuery/jQuery-2.1.4.min.js: {}
+    js/script.js: {}
     lib/bootstrap/js/bootstrap.min.js: {}
-    lib/plugins/slimScroll/jquery.slimscroll.min.js: {}
+    lib/slimScroll/jquery.slimscroll.min.js: {}
     lib/fastclick/fastclick.min.js: {}
     lib/adminlte/js/app.min.js: {}
   css:
@@ -16,4 +16,8 @@ base:
       lib/adminlte/css/AdminLTE.min.css: {}
       lib/adminlte/css/skins/_all-skins.min.css: {}
   dependencies:
-    # - core/jquery
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once

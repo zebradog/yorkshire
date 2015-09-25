@@ -1,0 +1,13 @@
+features:
+  logo: 1
+  name: 1
+  slogan: 1
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 1
+favicon:
+  use_default: 1
+menu_icons: "Administration|fa-gears\r\nHome|fa-home"
