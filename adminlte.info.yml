@@ -7,3 +7,8 @@ version: 1.0
 core: 8.x
 libraries:
   - adminlte/base
+regions:
+  content: Content
+  sidebar: Sidebar
+  footer: Footer
+  breadcrumb: Breadcrumb
