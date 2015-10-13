@@ -10,5 +10,5 @@ logo:
   use_default: 1
 favicon:
   use_default: 1
-menu_icons: "Administration|fa-gears\r\nHome|fa-home"
+menu_icons: "Administration|fa-gears\r\nHome|fa-home\r\nMy account|fa-user\r\nLog out|fa-sign-out\r\nAdd content|fa-plus"
 skin: blue

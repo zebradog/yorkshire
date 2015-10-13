@@ -26,11 +26,6 @@
  *   slogan has been disabled in theme settings.
  *
  * Page content (in order of occurrence in the default page.html.twig):
- * - title_prefix: Additional output populated by modules, intended to be
- *   displayed in front of the main title tag that appears in the template.
- * - title: The page title, for use in the actual content.
- * - title_suffix: Additional output populated by modules, intended to be
- *   displayed after the main title tag that appears in the template.
  * - node: Fully loaded node, if there is an automatically-loaded node
  *   associated with the page and the node ID is the second argument in the
  *   page's path (e.g. node/12345 and node/12345/revisions, but not
@@ -55,33 +50,21 @@
 #}
 <header class="main-header">
   <!-- Logo -->
+
   <a href="{{ front_page }}" id="logo" class="logo" rel="home">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">
-        {% if logo and favicon %}
-          <img src="{{ favicon }}" alt="{{ site_name }}">
-        {% else %}
-          {% for word in site_name | split(' ',4) %}{% set letter = word | split('',1) %}{{ letter[0] }}{% endfor %}
-        {% endif %}
-      </span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" >
-        {% if logo %}
-          <img src="{{ logo }}" alt="{{ site_name }}">
-        {% else %}
-          {{ site_name }}
-        {% endif %}
-      </span>
+      {% if page.brand %}{{ page.brand }}{% endif %}
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
     <!-- Sidebar toggle button-->
+    {% if page.sidebar %}
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </a>
+    {% endif %}
     <!-- User Account: style can be found in dropdown.less -->
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
@@ -121,51 +104,48 @@
 
 <!-- =============================================== -->
 
-<!-- Left side column. contains the sidebar -->
-<aside class="main-sidebar">
-<!-- sidebar: style can be found in sidebar.less -->
-<section class="sidebar">
-  {% if page.sidebar %}{{ page.sidebar }}{% endif %}
-</section>
-<!-- /.sidebar -->
-</aside>
+{% if page.sidebar %}
+  <!-- Left side column. contains the sidebar -->
+  <aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    {{ page.sidebar }}
+  </section>
+  <!-- /.sidebar -->
+  </aside>
+{% endif %}
 
 <!-- =============================================== -->
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  {% if title %}
-    <h1>
-      {{ title }}
-      <small>{{ page.help }}</small>
-    </h1>
+  <!-- Content Header (Page header) -->
+  {% if page.top %}
+    <section class="content-header">
+      {{ page.top }}
+    </section>
   {% endif %}
-  {% if page.breadcrumb %}
-    <ol class="breadcrumb">
-      {{ page.breadcrumb }}
-      {% if title and not is_front %}
-        <li class="active">{{ title }}</li>
-      {% endif %}
-    </ol>
-  {% endif %}
-</section>
 
-<!-- Main content -->
-<section class="content">
-  <!-- Default box -->
-  <div class="box">
-    <div class="box-body">
-      {{ page.content }}
-    </div><!-- /.box-body -->
-  </div><!-- /.box -->
-</section><!-- /.content -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+    {% if page.content %}
+    <div class="box">
+      <div class="box-body">
+        {{ page.content }}
+      </div><!-- /.box-body -->
+    </div><!-- /.box -->
+    {% endif %}
+    {% if page.bottom %}
+      {{ page.bottom }}
+    {% endif %}
+  </section><!-- /.content -->
+
 </div><!-- /.content-wrapper -->
 
 {% if page.footer %}
-<footer class="main-footer">
-  {{ page.footer }}
-</footer>
+  <footer class="main-footer">
+    {{ page.footer }}
+  </footer>
 {% endif %}
