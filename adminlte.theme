@@ -5,7 +5,6 @@ function adminlte_preprocess_html(&$variables) {
 }
 
 function adminlte_preprocess_page(&$variables) {
-  $variables['favicon'] = theme_get_setting('favicon.url');
   $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
   $picture = $user->get('user_picture')->entity;
   if($picture)
@@ -25,6 +24,10 @@ function adminlte_preprocess_page(&$variables) {
   $variables['user']['name'] = $user->getUsername();
   $variables['user']['picture'] = $picture;
   $variables['user']['created'] = $user->getCreatedtime();
+}
+
+function adminlte_preprocess_block(&$variables) {
+  $variables['favicon'] = theme_get_setting('favicon.url');
 }
 
 function adminlte_preprocess_menu(&$variables) {
