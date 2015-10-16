@@ -1,10 +1,10 @@
 <?php
 
-function adminlte_preprocess_html(&$variables) {
+function yorkshire_preprocess_html(&$variables) {
   $variables['skin'] = theme_get_setting('skin');
 }
 
-function adminlte_preprocess_page(&$variables) {
+function yorkshire_preprocess_page(&$variables) {
   $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
   $picture = $user->get('user_picture')->entity;
   if($picture)
@@ -26,11 +26,11 @@ function adminlte_preprocess_page(&$variables) {
   $variables['user']['created'] = $user->getCreatedtime();
 }
 
-function adminlte_preprocess_block(&$variables) {
+function yorkshire_preprocess_block(&$variables) {
   $variables['favicon'] = theme_get_setting('favicon.url');
 }
 
-function adminlte_preprocess_menu(&$variables) {
+function yorkshire_preprocess_menu(&$variables) {
   $icon_setting = explode("\n",theme_get_setting('menu_icons'));
   $icons = [];
   for($i = 0; $i < sizeof($icon_setting); $i++){
@@ -47,10 +47,10 @@ function adminlte_preprocess_menu(&$variables) {
   }
 }
 
-function adminlte_form_system_theme_settings_alter(&$form, $form_state) {
+function yorkshire_form_system_theme_settings_alter(&$form, $form_state) {
   $form['skin'] = array(
     '#type'          => 'select',
-    '#title'         => t('AdminLTE Skin'),
+    '#title'         => t('yorkshire Skin'),
     '#options' => array(
      "black" => t('Black'),
      "black-light" => t('Black - Light'),
@@ -75,7 +75,7 @@ function adminlte_form_system_theme_settings_alter(&$form, $form_state) {
   );
 }
 
-function adminlte_preprocess_breadcrumb(&$variables){
+function yorkshire_preprocess_breadcrumb(&$variables){
    if($variables['breadcrumb']){
      $request = \Drupal::request();
       if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {

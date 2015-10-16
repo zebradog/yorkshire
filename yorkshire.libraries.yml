@@ -13,7 +13,7 @@ base:
       lib/bootstrap/css/bootstrap.min.css: {}
       https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css: { type: external, minified: true }
       https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css: { type: external, minified: true }
-      lib/adminlte/css/AdminLTE.min.css: {}
+      lib/adminlte/css/adminlte.min.css: {}
       lib/adminlte/css/skins/_all-skins.min.css: {}
   dependencies:
     - core/jquery

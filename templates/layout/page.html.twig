@@ -69,9 +69,10 @@
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         {% if user.uid %}
+          {% if user.picture %}
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ user.picture }}" class="user-image" alt="User Image">
+                <img src="{{ user.picture }}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ user.name }}</span>
             </a>
             <ul class="dropdown-menu">
@@ -86,7 +87,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ base_path }}/user/{{ user.uid }}/edit" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ base_path }}/user/{{ user.uid }}/edit" class="btn btn-default btn-flat">My Account</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ base_path }}/user/logout" class="btn btn-default btn-flat">Sign out</a>
@@ -94,6 +95,10 @@
               </li>
             </ul>
           </li>
+          {% else %}
+            <li><a href="{{ base_path }}/user/{{ user.uid }}/edit">My Account</a></li>
+            <li><a href="{{ base_path }}/user/logout">Sign out</a></li>
+          {% endif %}
         {% else %}
           <li><a href="{{ base_path }}/user/login">Log in</a></li>
         {% endif %}
@@ -130,13 +135,15 @@
   <!-- Main content -->
   <section class="content">
     <!-- Default box -->
-    {% if page.content %}
-    <div class="box">
-      <div class="box-body">
-        {{ page.content }}
-      </div><!-- /.box-body -->
-    </div><!-- /.box -->
-    {% endif %}
+    {% block my_content %}
+      {% if page.content %}
+      <div class="box">
+        <div class="box-body">
+          {{ page.content }}
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+      {% endif %}
+    {% endblock %}
     {% if page.bottom %}
       {{ page.bottom }}
     {% endif %}

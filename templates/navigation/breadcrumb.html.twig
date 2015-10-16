@@ -11,18 +11,19 @@
 <ol class="breadcrumb">
   {% set i = 0 %}
   {% for item in breadcrumb %}
-
-      {% if item.url %}
-      <li>
-        <a href="{{ item.url }}">
-          {% if i == 0 %}
-            <i class="fa fa-home"></i>
-          {% endif %}
-          {{ item.text }}
-        </a>
-      <li>
-      {% else %}
-        <li class="active">{{ item.text }}</li>
+      {% if item.text %}
+        {% if item.url %}
+          <li>
+            <a href="{{ item.url }}">
+              {% if i == 0 %}
+                <i class="fa fa-home"></i>
+              {% endif %}
+              {{ item.text }}
+            </a>
+          <li>
+        {% else %}
+          <li class="active">{{ item.text }}</li>
+        {% endif %}
       {% endif %}
       {% set i = i + 1 %}
   {% endfor %}
