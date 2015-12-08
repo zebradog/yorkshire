@@ -5,19 +5,18 @@ function yorkshire_preprocess_html(&$variables) {
 }
 
 function yorkshire_preprocess_page(&$variables) {
-  $picture = NULL;
   $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
-  $field = \Drupal\field\Entity\FieldConfig::loadByName('user', 'user', 'user_picture');
-  if($field){
-    $picture = $user->get('user_picture')->entity;
-    if($picture)
-      $picture = $picture->url();
-    else{
-      $default_image = $field->getSetting('default_image');
-      if($default_image['uuid']){
-        $file = \Drupal::entityManager()->loadEntityByUuid('file', $default_image['uuid']);
-        $picture = file_create_url($file->getFileUri());
-      }
+  $picture = $user->get('user_picture')->entity;
+  if($picture)
+    $picture = $picture->url();
+  else{
+    $field = \Drupal\field\Entity\FieldConfig::loadByName('user', 'user', 'user_picture');
+    $default_image = $field->getSetting('default_image');
+    if($default_image['uuid']){
+      $file = \Drupal::entityManager()->loadEntityByUuid('file', $default_image['uuid']);
+      $picture = file_create_url($file->getFileUri());
+    }else{
+      $picture = NULL;
     }
   }
   $variables['user'] = [];
