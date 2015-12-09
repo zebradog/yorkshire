@@ -134,14 +134,9 @@
 
   <!-- Main content -->
   <section class="content">
-    <!-- Default box -->
     {% block my_content %}
       {% if page.content %}
-      <div class="box">
-        <div class="box-body">
           {{ page.content }}
-        </div><!-- /.box-body -->
-      </div><!-- /.box -->
       {% endif %}
     {% endblock %}
     {% if page.bottom %}

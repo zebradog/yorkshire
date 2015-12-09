@@ -22,3 +22,9 @@
   }
 
 }
+.login-page-header.logo .logo-lg {
+  display: block;
+}
+.login-page-header.logo .logo-mini {
+  display: none;
+}
