@@ -1,8 +1,7 @@
 yorkshire_1col:
-  label: 1 Column
+  label: 1 Column (100)
   category: Yorkshire
   template: templates/layout/yorkshire-1col
-  css: css/1col.css
   regions:
     top:
       label: Top region
@@ -10,12 +9,43 @@ yorkshire_1col:
       label: Bottom region
 
 yorkshire_2col:
-  label: 2 Column
+  label: 2 Column (50/50)
   category: Yorkshire
   template: templates/layout/yorkshire-2col
-  css: css/2col.css
   regions:
     left:
       label: Left region
+    right:
+      label: Right region
+
+yorkshire_2col_25:
+  label: 2 Column (25/75)
+  category: Yorkshire
+  template: templates/layout/yorkshire-2col-25
+  regions:
+    left:
+      label: Left region
+    right:
+      label: Right region
+
+yorkshire_2col_75:
+  label: 2 Column (75/25)
+  category: Yorkshire
+  template: templates/layout/yorkshire-2col-75
+  regions:
+    left:
+      label: Left region
+    right:
+      label: Right region
+
+yorkshire_3col:
+  label: 3 Column (33/33/33)
+  category: Yorkshire
+  template: templates/layout/yorkshire-3col
+  regions:
+    left:
+      label: Left region
+    center:
+      label: Center region
     right:
       label: Right region
