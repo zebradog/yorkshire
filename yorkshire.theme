@@ -85,3 +85,43 @@ function yorkshire_preprocess_breadcrumb(&$variables){
       }
    }
 }
+
+function yorkshire_preprocess_menu_local_action(&$variables) {
+  $link = $variables['element']['#link'];
+  $link += array('localized_options' => array());
+  $link['localized_options']['attributes']['class'][] = 'btn';
+  $link['localized_options']['attributes']['class'][] = 'btn-block';
+  $link['localized_options']['attributes']['class'][] = 'btn-primary';
+  $link['localized_options']['attributes']['class'][] = 'fa';
+  $link['localized_options']['attributes']['class'][] = 'fa-plus';
+
+  $variables['link'] = array(
+    '#type' => 'link',
+    '#title' => ' '.$link['title'],
+    '#options' => $link['localized_options'],
+    '#url' => $link['url'],
+  );
+}
+
+function yorkshire_theme_suggestions_region_alter(&$suggestions,&$variables) {
+  if(in_array("region__content",$suggestions)){
+  	$page_manager_page = \Drupal::routeMatch()->getRouteObject()->getDefault('page_manager_page');
+  	if($page_manager_page){
+  		$suggestions[] = 'region__page_manager_page_content';
+  		$suggestions[] = 'region__page_'.$page_manager_page.'_content';
+  	}
+  }
+}
+
+function yorkshire_theme_suggestions_block_alter(&$suggestions,&$variables) {
+  if(in_array("block__system_main_block",$suggestions)){
+    $page_manager_page = \Drupal::routeMatch()->getRouteObject()->getDefault('page_manager_page');
+    if($page_manager_page){
+      $suggestions[] = 'block__page_manager_page_system_main';
+      $suggestions[] = 'block__page_'.$page_manager_page.'_system_main';
+    }
+  }else if(in_array("page_manager_block_display",$variables['elements']['#cache']['keys'])){
+    $suggestions[] = 'block__page_manager_page_block';
+  }
+}
+

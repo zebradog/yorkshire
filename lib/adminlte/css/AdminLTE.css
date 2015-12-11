@@ -3977,7 +3977,7 @@ table.text-center th {
   -o-transform: rotate(30deg);
   transform: rotate(30deg);
 }
-#add-new-event {
+#add-new-scenario {
   -webkit-transition: all linear 0.3s;
   -o-transition: all linear 0.3s;
   transition: all linear 0.3s;

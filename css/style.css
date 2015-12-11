@@ -28,3 +28,13 @@
 .login-page-header.logo .logo-mini {
   display: none;
 }
+
+body .label {
+  color: #333;
+  font-size: 80%;
+}
+
+a.tabledrag-handle .handle {
+  width: 24px;
+  height: 24px;
+}
