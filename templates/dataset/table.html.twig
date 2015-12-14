@@ -48,6 +48,7 @@ set classes = [
   'responsive'
 ]
 %}
+<div class="table-responsive">
 <table{{ attributes.addClass(classes) }}>
   {% if caption %}
     <caption>{{ caption }}</caption>
@@ -115,3 +116,4 @@ set classes = [
     </tfoot>
   {% endif %}
 </table>
+</div>
