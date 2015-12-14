@@ -38,3 +38,7 @@ a.tabledrag-handle .handle {
   width: 24px;
   height: 24px;
 }
+
+.box > .box-header > h4{
+  margin:0;
+}
