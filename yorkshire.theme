@@ -122,6 +122,10 @@ function yorkshire_theme_suggestions_block_alter(&$suggestions,&$variables) {
     }
   }else if(in_array("page_manager_block_display",$variables['elements']['#cache']['keys'])){
     $suggestions[] = 'block__page_manager_page_block';
+    $type = $variables['elements']['content']['#block_content'] ? 
+      $variables['elements']['content']['#block_content']->bundle() 
+      : $variables['elements']['#configuration']['id'];
+    $suggestions[] = 'block__page_manager_page_'.$type;
   }
 }
 
