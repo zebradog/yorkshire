@@ -44,7 +44,7 @@ a.tabledrag-handle .handle {
 }
 
 @media (max-width: 991px){
-  .content-header > h1{
+  .content-header > h1.page-title{
     margin-top:20px;
   }
 }
