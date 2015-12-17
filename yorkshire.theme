@@ -120,12 +120,14 @@ function yorkshire_theme_suggestions_block_alter(&$suggestions,&$variables) {
       $suggestions[] = 'block__page_manager_page_system_main';
       $suggestions[] = 'block__page_'.$page_manager_page.'_system_main';
     }
-  }else if(in_array("page_manager_block_display",$variables['elements']['#cache']['keys'])){
+  }else if(array_key_exists('elements',$variables) 
+  && array_key_exists('#cache',$variables['elements'])
+  && array_key_exists('keys',$variables['elements']['#cache'])
+  && in_array("page_manager_block_display",$variables['elements']['#cache']['keys'])){
     $suggestions[] = 'block__page_manager_page_block';
-    $type = $variables['elements']['content']['#block_content'] ? 
-      $variables['elements']['content']['#block_content']->bundle() 
+    $type = $variables['elements']['content']['#block_content'] ?
+      $variables['elements']['content']['#block_content']->bundle()
       : $variables['elements']['#configuration']['id'];
     $suggestions[] = 'block__page_manager_page_'.$type;
   }
 }
-
