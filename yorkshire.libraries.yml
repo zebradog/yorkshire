@@ -4,6 +4,7 @@ base:
     js/script.js: {}
     lib/bootstrap/js/bootstrap.min.js: {}
     lib/slimScroll/jquery.slimscroll.min.js: {}
+    lib/custom-event-polyfill.js: {}
     lib/fastclick/fastclick.min.js: {}
     lib/adminlte/js/app.min.js: {}
   css:
