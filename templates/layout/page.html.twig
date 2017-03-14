@@ -84,26 +84,26 @@
                 <img src="{{ user.picture }}" class="img-circle" alt="User Image">
                 <p>
                   {{ user.name }}
-                  <small>Membro desde {{ user.created|date("M. Y") }}</small>
+                  <small>Member since {{ user.created|date("M. Y") }}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ base_path }}user/{{ user.uid }}/edit" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="{{ base_path }}user/{{ user.uid }}/edit" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{ base_path }}user/logout" class="btn btn-default btn-flat">Sair</a>
+                  <a href="{{ base_path }}user/logout" class="btn btn-default btn-flat">Logout</a>
                 </div>
               </li>
             </ul>
           </li>
           {% else %}
-            <li><a href="{{ base_path }}user/{{ user.uid }}/edit">Perfil</a></li>
-            <li><a href="{{ base_path }}user/logout">Sair</a></li>
+            <li><a href="{{ base_path }}user/{{ user.uid }}/edit">Profile</a></li>
+            <li><a href="{{ base_path }}user/logout">Logout</a></li>
           {% endif %}
         {% else %}
-          <li><a href="{{ base_path }}user/login">Entrar</a></li>
+          <li><a href="{{ base_path }}user/login">Login</a></li>
         {% endif %}
       </ul>
     </div>
