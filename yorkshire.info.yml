@@ -12,8 +12,10 @@ regions:
   header: Header
   top: Top
   content: Content
+  leftcontent: Left Content
+  rightcontent: Right Content
   bottom: Bottom
-  sidebar: Sidebar
+  sidebar: Left Sidebar
   footer: Footer
 features:
   - favicon
