@@ -43,11 +43,14 @@
  * - page.sidebar_second: Items for the second sidebar.
  * - page.footer: Items for the footer region.
  * - page.breadcrumb: Items for the breadcrumb region.
+ * - page.leftcontent: Items placed on left content
+ * - page.rightcontent: Items placed on right content
  *
  * @see template_preprocess_page()
  * @see html.html.twig
  */
 #}
+
 <header class="main-header">
   <!-- Logo -->
 
@@ -81,26 +84,26 @@
                 <img src="{{ user.picture }}" class="img-circle" alt="User Image">
                 <p>
                   {{ user.name }}
-                  <small>Member since {{ user.created|date("M. Y") }}</small>
+                  <small>Membro desde {{ user.created|date("M. Y") }}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ base_path }}user/{{ user.uid }}/edit" class="btn btn-default btn-flat">My Account</a>
+                  <a href="{{ base_path }}user/{{ user.uid }}/edit" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{ base_path }}user/logout" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ base_path }}user/logout" class="btn btn-default btn-flat">Sair</a>
                 </div>
               </li>
             </ul>
           </li>
           {% else %}
-            <li><a href="{{ base_path }}user/{{ user.uid }}/edit">My Account</a></li>
-            <li><a href="{{ base_path }}user/logout">Sign out</a></li>
+            <li><a href="{{ base_path }}user/{{ user.uid }}/edit">Perfil</a></li>
+            <li><a href="{{ base_path }}user/logout">Sair</a></li>
           {% endif %}
         {% else %}
-          <li><a href="{{ base_path }}user/login">Log in</a></li>
+          <li><a href="{{ base_path }}user/login">Entrar</a></li>
         {% endif %}
       </ul>
     </div>
@@ -123,7 +126,7 @@
 <!-- =============================================== -->
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="margin-top: 50px">
 
   <!-- Content Header (Page header) -->
   {% if page.top %}
@@ -132,18 +135,54 @@
     </section>
   {% endif %}
 
-  <!-- Main content -->
-  <section class="content">
-    {% block my_content %}
-      {% if page.content %}
-          {{ page.content }}
-      {% endif %}
-    {% endblock %}
-    {% if page.bottom %}
-      {{ page.bottom }}
-    {% endif %}
-  </section><!-- /.content -->
 
+  {% if (page.leftcontent) and (page.rightcontent) and (page.content) %}
+      <div class="row nav-tabs-custom">
+        <div class="col-md-4">
+          {{ page.leftcontent }}
+        </div>
+        <div class="col-md-4">
+          {{ page.content }}
+        </div>
+        <div class="col-md-4">
+          {{ page.rightcontent }}
+        </div>
+      </div>
+
+      {% elseif (page.leftcontent) and (page.content) %}
+      <div class="row nav-tabs-custom">
+        <div class="col-md-6">
+          {{ page.leftcontent }}
+        </div>
+        <div class="col-md-6">
+          {{ page.content }}
+        </div>
+      </div>
+
+      {% elseif (page.rightcontent) and (page.content) %}
+        <div class="row nav-tabs-custom">
+          <div class="col-md-6">
+            {{ page.content }}
+          </div>
+          <div class="col-md-6">
+            {{ page.rightcontent }}
+          </div>
+        </div>
+        {% else %}
+
+        <!-- Main content -->
+        <section class="content">
+          {% block my_content %}
+            {% if page.content %}
+              {{ page.content }}
+            {% endif %}
+          {% endblock %}
+          {% if page.bottom %}
+            {{ page.bottom }}
+          {% endif %}
+        </section><!-- /.content -->
+
+    {% endif %}
 </div><!-- /.content-wrapper -->
 
 {% if page.footer %}
